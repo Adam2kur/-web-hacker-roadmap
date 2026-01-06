@@ -1,0 +1,1274 @@
+
+                {
+                    id: "phase-3",
+                    title: "PHASE 3 — PROGRAMMING FOR HACKERS",
+                    topics: [
+                        {
+                            id: "topic-3-1",
+                            title: "JavaScript (core + backend logic)",
+                            completed: false,
+                            content: {
+                                explanation: `
+                                    <p>JavaScript is the language of the web - it runs in browsers, servers (Node.js), and even databases. Understanding JavaScript from first principles is essential for web security.</p>
+                                    
+                                    <div class="diagram">
+                                        <div class="trust-boundary">
+                                            <div class="trust-zone high">
+                                                <strong>Frontend JavaScript</strong><br>
+                                                • DOM manipulation<br>
+                                                • Event handling<br>
+                                                • Browser APIs<br>
+                                                • Sandboxed execution
+                                            </div>
+                                            <div class="trust-zone low">
+                                                <strong>Backend JavaScript (Node.js)</strong><br>
+                                                • File system access<br>
+                                                • Network operations<br>
+                                                • Process execution<br>
+                                                • Full system access
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>First Principles:</strong> JavaScript is single-threaded with an event loop. It uses prototypal inheritance (not classical). Understanding the event loop is crucial for understanding asynchronous behavior and potential race conditions.</p>
+                                    
+                                    <p><strong>Security Relevance:</strong> JavaScript execution contexts determine what an attacker can do. Frontend JS is heavily restricted; backend JS has system access. The same language, completely different security implications.</p>
+                                `,
+                                whyItMatters: `
+                                    <div class="callout callout-why">
+                                        <h4>🛡️ Why This Matters</h4>
+                                        <p>JavaScript mastery enables you to:</p>
+                                        <ul>
+                                            <li>Understand XSS payload construction and evasion</li>
+                                            <li>Analyze client-side security logic</li>
+                                            <li>Test Node.js applications effectively</li>
+                                            <li>Write custom testing tools and scripts</li>
+                                            <li>Read and understand modern web application code</li>
+                                        </ul>
+                                        <p>JavaScript is not just a language to learn; it's a lens through which to understand web security.</p>
+                                    </div>
+                                `,
+                                misconceptions: `
+                                    <div class="callout callout-misconception">
+                                        <h4>❌ Common Misconceptions</h4>
+                                        <p><strong>Myth:</strong> "JavaScript is just for making web pages interactive."</p>
+                                        <p><strong>Reality:</strong> JavaScript is a full-stack language powering everything from browsers to servers to mobile apps. Modern JavaScript (ES6+) has features comparable to other mature languages.</p>
+                                        <p><strong>Security Impact:</strong> Underestimating JavaScript's capabilities leads to missing entire classes of vulnerabilities in modern applications.</p>
+                                    </div>
+                                `,
+                                examples: [
+                                    {
+                                        title: "Real-World Scenario: Prototype Pollution",
+                                        description: "JavaScript's prototypal inheritance allows objects to inherit properties from their prototype. If an application merges user input with objects without proper validation, attackers can pollute the Object prototype, affecting all objects in the application."
+                                    }
+                                ],
+                                exercises: [
+                                    {
+                                        level: "beginner",
+                                        description: "Write a simple Node.js HTTP server that echoes back user input. Then modify it to properly sanitize the input.",
+                                        goal: "Understand the difference between frontend and backend JavaScript security",
+                                        expected: "Two versions of the server: one vulnerable, one secure"
+                                    },
+                                    {
+                                        level: "intermediate",
+                                        description: "Create a simple Single Page Application (SPA) with client-side routing and observe how authentication state is maintained without page reloads.",
+                                        goal: "Understand modern frontend architecture security implications",
+                                        expected: "SPA with observable client-side state management"
+                                    },
+                                    {
+                                        level: "advanced",
+                                        description: "Implement a prototype pollution vulnerability in a test application, then fix it.",
+                                        goal: "Deep understanding of JavaScript inheritance security issues",
+                                        expected: "Demonstration of prototype pollution and its mitigation"
+                                    }
+                                ],
+                                mentalModels: `
+                                    <div class="diagram data-flow-diagram">
+                                        <div class="flow-node client">User Input</div>
+                                        <div class="flow-arrow"></div>
+                                        <div class="flow-node" style="border-color: var(--accent-blue);">Frontend JavaScript</div>
+                                        <div class="flow-arrow"></div>
+                                        <div style="padding: 1rem; border: 2px dashed var(--accent-red); border-radius: var(--radius-md);">
+                                            <strong>Trust Boundary</strong><br>
+                                            Browser Sandbox
+                                        </div>
+                                        <div class="flow-arrow"></div>
+                                        <div class="flow-node" style="border-color: var(--accent-green);">Backend JavaScript</div>
+                                        <div class="flow-arrow"></div>
+                                        <div class="flow-node database">System Resources</div>
+                                    </div>
+                                    
+                                    <p><strong>Mental Model:</strong> Think of JavaScript execution as having different "security clearance levels." Frontend JS has "visitor" clearance (restricted), while backend JS has "admin" clearance (full access). The browser sandbox is the security checkpoint between them.</p>
+                                `
+                            }
+                        },
+                        {
+                            id: "topic-3-2",
+                            title: "Python (scripting & automation)",
+                            completed: false,
+                            content: {
+                                explanation: `
+                                    <p>Python is the Swiss Army knife of security testing - excellent for rapid prototyping, automation, and tool building.</p>
+                                    
+                                    <div class="diagram">
+                                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                                            <div style="border: 2px solid var(--accent-blue); padding: 1rem; border-radius: var(--radius-md);">
+                                                <strong>Why Python for Security</strong><br>
+                                                • Readable syntax<br>
+                                                • Huge security library ecosystem<br>
+                                                • Cross-platform<br>
+                                                • Rapid development
+                                            </div>
+                                            <div style="border: 2px solid var(--accent-green); padding: 1rem; border-radius: var(--radius-md);">
+                                                <strong>Common Security Uses</strong><br>
+                                                • HTTP request scripting<br>
+                                                • Network scanning<br>
+                                                • Data parsing/analysis<br>
+                                                • Custom exploit development
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>First Principles:</strong> Python emphasizes readability and simplicity (the "Zen of Python"). It's interpreted (not compiled), dynamically typed, and has comprehensive standard libraries. Understanding Python's execution model helps when analyzing Python web applications.</p>
+                                    
+                                    <p><strong>Security Tools Ecosystem:</strong> Most security tools are written in or extensible with Python. Understanding Python allows you to modify, extend, or create your own tools rather than being limited to what others have built.</p>
+                                `,
+                                whyItMatters: `
+                                    <div class="callout callout-why">
+                                        <h4>🛡️ Why This Matters</h4>
+                                        <p>Python proficiency enables you to:</p>
+                                        <ul>
+                                            <li>Automate repetitive testing tasks</li>
+                                            <li>Create custom testing tools for specific applications</li>
+                                            <li>Understand and modify existing security tools</li>
+                                            <li>Write quick proof-of-concept exploits</li>
+                                            <li>Parse and analyze large datasets from security tests</li>
+                                        </ul>
+                                        <p>Python turns you from a tool-user into a tool-maker.</p>
+                                    </div>
+                                `,
+                                exercises: [
+                                    {
+                                        level: "beginner",
+                                        description: "Write a Python script that makes HTTP requests to a target URL and prints response headers.",
+                                        goal: "Learn basic HTTP client operations in Python",
+                                        expected: "Script that fetches and displays HTTP response metadata"
+                                    },
+                                    {
+                                        level: "intermediate",
+                                        description: "Create a simple port scanner that checks common web ports (80, 443, 8080, 3000) on a target host.",
+                                        goal: "Understand network programming basics",
+                                        expected: "Port scanner with configurable target and port list"
+                                    },
+                                    {
+                                        level: "advanced",
+                                        description: "Build a simple fuzzer that sends variations of input to a web parameter and detects anomalous responses.",
+                                        goal: "Understand automated testing principles",
+                                        expected: "Basic fuzzer with response analysis"
+                                    }
+                                ],
+                                mentalModels: `
+                                    <div class="diagram">
+                                        <div style="text-align: center; font-family: var(--monospace); background: var(--tertiary-bg); padding: 1rem; border-radius: var(--radius-md);">
+                                            Problem → Python Script → Automated Solution<br>
+                                            <br>
+                                            Manual Testing → Python Automation → Scalable Testing<br>
+                                            <br>
+                                            Tool Limitation → Python Extension → Custom Capability
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>Mental Model:</strong> Think of Python as your "force multiplier." Every manual testing technique you learn should eventually be automated with Python. This transforms one-off discoveries into repeatable testing procedures.</p>
+                                `
+                            }
+                        },
+                        {
+                            id: "topic-3-3",
+                            title: "Bash (automation)",
+                            completed: false,
+                            content: {
+                                explanation: `
+                                    <p>Bash is the language of Unix/Linux systems - essential for system manipulation, file operations, and pipeline automation.</p>
+                                    
+                                    <div class="diagram">
+                                        <div class="trust-boundary">
+                                            <div class="trust-zone high">
+                                                <strong>Bash for System Operations</strong><br>
+                                                • File system navigation<br>
+                                                • Process management<br>
+                                                • Text processing<br>
+                                                • Pipeline creation
+                                            </div>
+                                            <div class="trust-zone low">
+                                                <strong>Bash for Security Testing</strong><br>
+                                                • Log analysis<br>
+                                                • Quick network tests<br>
+                                                • Tool chaining<br>
+                                                • Environment setup
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>First Principles:</strong> Bash is a shell and command language. It excels at combining small, focused tools (the Unix philosophy) into powerful pipelines. Everything in Bash is text - understanding text processing (grep, sed, awk) is fundamental.</p>
+                                    
+                                    <p><strong>Power of Pipelines:</strong> The real strength of Bash is connecting commands: <code>command1 | command2 | command3</code>. This allows complex data transformations with simple, reusable components.</p>
+                                    
+                                    <p><strong>Security Context:</strong> After gaining access to a system, Bash is your primary interface. Understanding Bash helps with post-exploitation, log analysis, and understanding system state.</p>
+                                `,
+                                whyItMatters: `
+                                    <div class="callout callout-why">
+                                        <h4>🛡️ Why This Matters</h4>
+                                        <p>Bash mastery enables you to:</p>
+                                        <ul>
+                                            <li>Navigate and manipulate compromised systems</li>
+                                            <li>Analyze logs and system artifacts quickly</li>
+                                            <li>Chain security tools together for custom workflows</li>
+                                            <li>Automate repetitive system tasks</li>
+                                            <li>Understand how applications interact with the OS</li>
+                                        </ul>
+                                        <p>When you have shell access, Bash is your interface to the system. Not knowing Bash is like having a supercar but not knowing how to drive.</p>
+                                    </div>
+                                `,
+                                misconceptions: `
+                                    <div class="callout callout-misconception">
+                                        <h4>❌ Common Misconceptions</h4>
+                                        <p><strong>Myth:</strong> "Bash is just for running commands; real programming requires Python or other languages."</p>
+                                        <p><strong>Reality:</strong> Bash is a full programming language with variables, loops, conditionals, and functions. For system-level tasks and text processing, Bash is often more efficient than higher-level languages.</p>
+                                        <p><strong>Security Impact:</strong> Many post-exploitation activities happen in Bash. Not knowing it means missing opportunities during security assessments.</p>
+                                    </div>
+                                `,
+                                exercises: [
+                                    {
+                                        level: "beginner",
+                                        description: "Create a Bash script that finds all files modified in the last 24 hours and lists their permissions and owners.",
+                                        goal: "Learn file system navigation and filtering",
+                                        expected: "Script that outputs recently modified files with metadata"
+                                    },
+                                    {
+                                        level: "intermediate",
+                                        description: "Write a script that monitors log files for failed login attempts and alerts when a threshold is exceeded.",
+                                        goal: "Understand log analysis and automation",
+                                        expected: "Log monitoring script with alerting capability"
+                                    },
+                                    {
+                                        level: "advanced",
+                                        description: "Create a tool that chains nmap, dirb, and nikto scans together into a simple reconnaissance pipeline.",
+                                        goal: "Master tool chaining and automation",
+                                        expected: "Integrated reconnaissance pipeline script"
+                                    }
+                                ],
+                                mentalModels: `
+                                    <div class="diagram data-flow-diagram">
+                                        <div class="flow-node">Input Data</div>
+                                        <div class="flow-arrow"></div>
+                                        <div style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-family: var(--monospace);">
+                                            command1
+                                        </div>
+                                        <div style="font-size: 1.5rem; color: var(--text-tertiary);">|</div>
+                                        <div style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-family: var(--monospace);">
+                                            command2
+                                        </div>
+                                        <div style="font-size: 1.5rem; color: var(--text-tertiary);">|</div>
+                                        <div style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-family: var(--monospace);">
+                                            command3
+                                        </div>
+                                        <div class="flow-arrow"></div>
+                                        <div class="flow-node">Processed Output</div>
+                                    </div>
+                                    
+                                    <p><strong>Mental Model:</strong> Think of Bash as a factory assembly line. Raw materials (data) enter, get processed by specialized machines (commands), and finished products (results) emerge. Your job is to design the most efficient assembly line for each task.</p>
+                                `
+                            }
+                        },
+                        {
+                            id: "topic-3-4",
+                            title: "Variables and control flow",
+                            completed: false,
+                            content: {
+                                explanation: `
+                                    <p>Variables store data; control flow determines execution path. These are programming fundamentals that directly impact security.</p>
+                                    
+                                    <div class="diagram">
+                                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                            <div style="border: 2px solid var(--accent-blue); padding: 1rem; border-radius: var(--radius-md);">
+                                                <strong>Variables - Data Storage</strong><br>
+                                                • Named memory locations<br>
+                                                • Different types (string, number, boolean)<br>
+                                                • Scope (global vs local)<br>
+                                                • Mutable vs immutable
+                                            </div>
+                                            <div style="border: 2px solid var(--accent-green); padding: 1rem; border-radius: var(--radius-md);">
+                                                <strong>Control Flow - Execution Path</strong><br>
+                                                • Conditionals (if/else)<br>
+                                                • Loops (for, while)<br>
+                                                • Functions<br>
+                                                • Error handling
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>Security Implications:</strong></p>
+                                    <ul>
+                                        <li><strong>Variable Scope:</strong> Global variables can be accessed/modified unexpectedly</li>
+                                        <li><strong>Type Confusion:</strong> Different languages handle types differently (JavaScript's loose typing vs Python's duck typing)</li>
+                                        <li><strong>Race Conditions:</strong> When control flow depends on timing or external state</li>
+                                        <li><strong>Uninitialized Variables:</strong> Can contain unexpected values or sensitive data from memory</li>
+                                    </ul>
+                                    
+                                    <p><strong>First Principles:</strong> At the hardware level, variables are memory addresses. Control flow is the CPU's program counter jumping to different addresses. High-level languages abstract these details but the underlying reality affects security.</p>
+                                `,
+                                whyItMatters: `
+                                    <div class="callout callout-why">
+                                        <h4>🛡️ Why This Matters</h4>
+                                        <p>Understanding programming fundamentals helps you:</p>
+                                        <ul>
+                                            <li>Read and understand application code during reviews</li>
+                                            <li>Predict how applications will handle unexpected input</li>
+                                            <li>Identify logic flaws in control flow</li>
+                                            <li>Understand variable scope issues leading to information disclosure</li>
+                                            <li>Write effective test cases that exercise different code paths</li>
+                                        </ul>
+                                        <p>You can't find bugs in code you don't understand.</p>
+                                    </div>
+                                `,
+                                exercises: [
+                                    {
+                                        level: "beginner",
+                                        description: "Write a function in any language that takes user input and uses different control flow paths based on the input. Intentionally create a logic flaw.",
+                                        goal: "Understand how control flow affects security",
+                                        expected: "Function with observable logic flaw"
+                                    },
+                                    {
+                                        level: "intermediate",
+                                        description: "Create a program that demonstrates variable scope issues - where a variable is accessible where it shouldn't be.",
+                                        goal: "Understand scope and information leakage",
+                                        expected: "Program showing unintended variable access"
+                                    },
+                                    {
+                                        level: "advanced",
+                                        description: "Implement a race condition in a multi-threaded program where control flow depends on timing.",
+                                        goal: "Understand concurrency security issues",
+                                        expected: "Program demonstrating race condition vulnerability"
+                                    }
+                                ],
+                                mentalModels: `
+                                    <div class="diagram">
+                                        <div style="text-align: center; position: relative;">
+                                            <div style="display: inline-block; padding: 1rem; border: 2px solid var(--accent-blue); border-radius: var(--radius-md); margin-bottom: 1rem;">
+                                                Program Start
+                                            </div>
+                                            <div style="position: relative;">
+                                                <div style="width: 2px; height: 50px; background: var(--accent-blue); margin: 0 auto;"></div>
+                                                <div style="position: absolute; left: 50%; transform: translateX(-50%); top: 25px; background: var(--primary-bg); padding: 0 1rem; color: var(--accent-green);">
+                                                    Decision Point
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1rem;">
+                                                <div style="padding: 1rem; border: 2px solid var(--accent-green); border-radius: var(--radius-md);">
+                                                    Path A<br>(Secure)
+                                                </div>
+                                                <div style="padding: 1rem; border: 2px solid var(--accent-red); border-radius: var(--radius-md);">
+                                                    Path B<br>(Vulnerable)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>Mental Model:</strong> Think of program execution as a journey through a maze. Variables are items you carry. Control flow is choosing which path to take. Security vulnerabilities are either dangerous items (variables with sensitive data) or wrong turns (control flow leading to unsafe code).</p>
+                                `
+                            }
+                        },
+                        {
+                            id: "topic-3-5",
+                            title: "Input handling",
+                            completed: false,
+                            content: {
+                                explanation: `
+                                    <p>Input handling is where most security vulnerabilities originate. How applications process user input determines their security posture.</p>
+                                    
+                                    <div class="diagram data-flow-diagram">
+                                        <div class="flow-node client">Untrusted User Input</div>
+                                        <div class="flow-arrow"></div>
+                                        <div style="padding: 1rem; border: 2px dashed var(--accent-red); border-radius: var(--radius-md);">
+                                            <strong>Attack Surface</strong><br>
+                                            All entry points
+                                        </div>
+                                        <div class="flow-arrow"></div>
+                                        <div class="flow-node" style="border-color: var(--accent-amber);">Input Validation</div>
+                                        <div class="flow-arrow"></div>
+                                        <div class="flow-node" style="border-color: var(--accent-green);">Safe Processing</div>
+                                        <div class="flow-arrow"></div>
+                                        <div class="flow-node">Trusted Output</div>
+                                    </div>
+                                    
+                                    <p><strong>Input Sources:</strong></p>
+                                    <ul>
+                                        <li><strong>Direct User Input:</strong> Forms, URLs, cookies</li>
+                                        <li><strong>Indirect Input:</strong> File uploads, API responses, database values</li>
+                                        <li><strong>Environmental Input:</strong> Headers, IP addresses, system properties</li>
+                                        <li><strong>Hidden Input:</strong> Serialized data, encoded values, metadata</li>
+                                    </ul>
+                                    
+                                    <p><strong>Processing Contexts:</strong> The same input handled differently in different contexts:</p>
+                                    <div class="diagram">
+                                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.5rem;">
+                                            <div style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); text-align: center;">
+                                                HTML Context
+                                            </div>
+                                            <div style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); text-align: center;">
+                                                JavaScript Context
+                                            </div>
+                                            <div style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); text-align: center;">
+                                                SQL Context
+                                            </div>
+                                            <div style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); text-align: center;">
+                                                OS Command Context
+                                            </div>
+                                            <div style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); text-align: center;">
+                                                File Path Context
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>First Principles:</strong> All input is potentially malicious until proven otherwise. The fundamental security axiom: "Never trust user input."</p>
+                                `,
+                                whyItMatters: `
+                                    <div class="callout callout-why">
+                                        <h4>🛡️ Why This Matters</h4>
+                                        <p>Input handling understanding enables you to:</p>
+                                        <ul>
+                                            <li>Identify all entry points in an application</li>
+                                            <li>Test each input in its appropriate context</li>
+                                            <li>Understand why certain payloads work in some contexts but not others</li>
+                                            <li>Predict how applications will process malicious input</li>
+                                            <li>Write secure code that properly handles all input</li>
+                                        </ul>
+                                        <p>Input handling vulnerabilities (XSS, SQLi, Command Injection, etc.) account for the majority of web security issues.</p>
+                                    </div>
+                                `,
+                                misconceptions: `
+                                    <div class="callout callout-misconception">
+                                        <h4>❌ Common Misconceptions</h4>
+                                        <p><strong>Myth:</strong> "Input validation means checking if input matches expected format."</p>
+                                        <p><strong>Reality:</strong> Input validation is necessary but not sufficient. You also need output encoding/escaping, proper APIs, and context-aware processing. Whitelist validation is best, but blacklisting alone is inadequate.</p>
+                                        <p><strong>Security Impact:</strong> This misconception leads to bypassable filters and incomplete protection.</p>
+                                    </div>
+                                `,
+                                examples: [
+                                    {
+                                        title: "Real-World Scenario: Different Contexts Require Different Handling",
+                                        description: "User input displayed in an HTML page needs HTML encoding. The same input used in a SQL query needs SQL escaping. The same input used in a system command needs command argument sanitization. Using the wrong protection for the context leaves vulnerabilities."
+                                    }
+                                ],
+                                exercises: [
+                                    {
+                                        level: "beginner",
+                                        description: "Create a simple web form that echoes user input. Make it vulnerable to XSS, then fix it with proper output encoding.",
+                                        goal: "Understand input/output context mismatch",
+                                        expected: "Two versions: vulnerable and secure"
+                                    },
+                                    {
+                                        level: "intermediate",
+                                        description: "Identify all input sources in a sample application (URL parameters, form fields, headers, cookies, file uploads).",
+                                        goal: "Learn to map application attack surface",
+                                        expected: "Complete input source inventory"
+                                    },
+                                    {
+                                        level: "advanced",
+                                        description: "Create a test that sends the same malicious payload through different input vectors and observes how each is processed differently.",
+                                        goal: "Understand context-aware testing",
+                                        expected: "Multi-context testing methodology"
+                                    }
+                                ],
+                                mentalModels: `
+                                    <div class="diagram">
+                                        <div style="text-align: center;">
+                                            <div style="display: inline-block; padding: 1rem; border: 2px solid var(--accent-red); border-radius: var(--radius-md); margin: 0.5rem;">
+                                                Raw Input<br><small>(Potentially Malicious)</small>
+                                            </div>
+                                            <div style="display: inline-block; font-size: 1.5rem; margin: 0 1rem;">→</div>
+                                            <div style="display: inline-block; padding: 1rem; border: 2px solid var(--accent-amber); border-radius: var(--radius-md); margin: 0.5rem;">
+                                                Context Detector<br><small>(Where will this be used?)</small>
+                                            </div>
+                                            <div style="display: inline-block; font-size: 1.5rem; margin: 0 1rem;">→</div>
+                                            <div style="display: inline-block; padding: 1rem; border: 2px solid var(--accent-green); border-radius: var(--radius-md); margin: 0.5rem;">
+                                                Context-Specific Sanitizer<br><small>(HTML encode, SQL escape, etc.)</small>
+                                            </div>
+                                            <div style="display: inline-block; font-size: 1.5rem; margin: 0 1rem;">→</div>
+                                            <div style="display: inline-block; padding: 1rem; border: 2px solid var(--accent-blue); border-radius: var(--radius-md); margin: 0.5rem;">
+                                                Safe Output<br><small>(Context-appropriate)</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>Mental Model:</strong> Think of user input as raw materials that need processing before use. Different destinations (HTML page, SQL query, command line) require different processing. Sending lumber to a metal shop or steel to a carpentry shop causes problems. Context matters.</p>
+                                `
+                            }
+                        },
+                        {
+                            id: "topic-3-6",
+                            title: "Server-side logic",
+                            completed: false,
+                            content: {
+                                explanation: `
+                                    <p>Server-side logic is the business rules, data processing, and application intelligence that runs on the server. This is where most security decisions should be made.</p>
+                                    
+                                    <div class="diagram">
+                                        <div class="trust-boundary">
+                                            <div class="trust-zone low">
+                                                <strong>Client-Side Logic</strong><br>
+                                                • Can be bypassed<br>
+                                                • For user experience only<br>
+                                                • Untrusted environment<br>
+                                                • No security decisions
+                                            </div>
+                                            <div class="trust-zone high">
+                                                <strong>Server-Side Logic</strong><br>
+                                                • Cannot be bypassed<br>
+                                                • Enforces business rules<br>
+                                                • Trusted environment<br>
+                                                • All security decisions
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>Key Security Principles:</strong></p>
+                                    <ul>
+                                        <li><strong>Never Trust the Client:</strong> All client-side validation can be bypassed</li>
+                                        <li><strong>Defense in Depth:</strong> Multiple server-side checks</li>
+                                        <li><strong>Fail Securely:</strong> Default to denial when errors occur</li>
+                                        <li><strong>Complete Mediation:</strong> Check every access, every time</li>
+                                    </ul>
+                                    
+                                    <p><strong>Common Server-Side Vulnerabilities:</strong></p>
+                                    <ul>
+                                        <li><strong>Broken Access Control:</strong> Logic flaws in permission checks</li>
+                                        <li><strong>Business Logic Flaws:</strong> Incorrect application of business rules</li>
+                                        <li><strong>Insecure Direct Object References:</strong> Exposing internal references</li>
+                                        <li><strong>Mass Assignment:</strong> Allowing users to set protected fields</li>
+                                    </ul>
+                                    
+                                    <p><strong>First Principles:</strong> The server is the authority. It owns the data, enforces the rules, and makes final decisions. Client requests are suggestions, not commands.</p>
+                                `,
+                                whyItMatters: `
+                                    <div class="callout callout-why">
+                                        <h4>🛡️ Why This Matters</h4>
+                                        <p>Understanding server-side logic helps you:</p>
+                                        <ul>
+                                            <li>Identify where security decisions are (or should be) made</li>
+                                            <li>Test authorization and access control logic</li>
+                                            <li>Find business logic vulnerabilities that tools miss</li>
+                                            <li>Understand the real attack surface of an application</li>
+                                            <li>Design secure architectures from the start</li>
+                                        </ul>
+                                        <p>Server-side logic vulnerabilities are often the most severe because they bypass all client-side protections.</p>
+                                    </div>
+                                `,
+                                misconceptions: `
+                                    <div class="callout callout-misconception">
+                                        <h4>❌ Common Misconceptions</h4>
+                                        <p><strong>Myth:</strong> "If it passes client-side validation, it's safe."</p>
+                                        <p><strong>Reality:</strong> Client-side validation is for user experience only. All security validation must happen server-side. Attackers can send any data directly to server endpoints, completely bypassing client-side checks.</p>
+                                        <p><strong>Security Impact:</strong> This misconception leads to applications that are vulnerable despite having "secure" frontends.</p>
+                                    </div>
+                                `,
+                                examples: [
+                                    {
+                                        title: "Real-World Scenario: Price Manipulation",
+                                        description: "An e-commerce application calculates order totals client-side and sends the total to the server. An attacker modifies the JavaScript to send a lower price. Without server-side price calculation, the attack succeeds."
+                                    }
+                                ],
+                                exercises: [
+                                    {
+                                        level: "beginner",
+                                        description: "Create a web application with client-side price calculation. Show how it can be bypassed, then fix it with server-side calculation.",
+                                        goal: "Understand client vs server authority",
+                                        expected: "Demo of bypass and fix"
+                                    },
+                                    {
+                                        level: "intermediate",
+                                        description: "Implement a multi-step checkout process where each step has server-side state validation.",
+                                        goal: "Learn server-side state management",
+                                        expected: "Checkout process with proper server validation"
+                                    },
+                                    {
+                                        level: "advanced",
+                                        description: "Design and implement a role-based access control system with server-side enforcement of all permissions.",
+                                        goal: "Master server-side authorization",
+                                        expected: "Complete RBAC implementation"
+                                    }
+                                ],
+                                mentalModels: `
+                                    <div class="diagram data-flow-diagram">
+                                        <div class="flow-node client">Client Request<br><small>(Suggestion)</small></div>
+                                        <div class="flow-arrow"></div>
+                                        <div style="padding: 1rem; border: 2px solid var(--accent-red); border-radius: var(--radius-md);">
+                                            <strong>Server Gateway</strong><br>
+                                            • Input validation<br>
+                                            • Authentication check
+                                        </div>
+                                        <div class="flow-arrow"></div>
+                                        <div style="padding: 1rem; border: 2px solid var(--accent-amber); border-radius: var(--radius-md);">
+                                            <strong>Business Logic</strong><br>
+                                            • Rules processing<br>
+                                            • Data validation
+                                        </div>
+                                        <div class="flow-arrow"></div>
+                                        <div style="padding: 1rem; border: 2px solid var(--accent-green); border-radius: var(--radius-md);">
+                                            <strong>Authorization Layer</strong><br>
+                                            • Permission checks<br>
+                                            • Access control
+                                        </div>
+                                        <div class="flow-arrow"></div>
+                                        <div class="flow-node database">Data Store<br><small>(Final Authority)</small></div>
+                                    </div>
+                                    
+                                    <p><strong>Mental Model:</strong> Think of the server as a fortress. Client requests are messengers asking for things. The fortress has multiple gates (validation layers), guards (authentication), rules (business logic), and a vault (database). Every messenger must pass all checks to get anything from the vault.</p>
+                                `
+                            }
+                        },
+                        {
+                            id: "topic-3-7",
+                            title: "Error handling",
+                            completed: false,
+                            content: {
+                                explanation: `
+                                    <p>Error handling determines how applications respond to unexpected conditions. Poor error handling leaks information and creates vulnerabilities.</p>
+                                    
+                                    <div class="diagram">
+                                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                            <div style="border: 2px solid var(--accent-red); padding: 1rem; border-radius: var(--radius-md);">
+                                                <strong>Insecure Error Handling</strong><br>
+                                                • Detailed error messages<br>
+                                                • Stack traces in production<br>
+                                                • Information leakage<br>
+                                                • Helpful to attackers
+                                            </div>
+                                            <div style="border: 2px solid var(--accent-green); padding: 1rem; border-radius: var(--radius-md);">
+                                                <strong>Secure Error Handling</strong><br>
+                                                • Generic error messages<br>
+                                                • Logging for admins only<br>
+                                                • Fail securely<br>
+                                                • No information leakage
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>Types of Error Information Leakage:</strong></p>
+                                    <ul>
+                                        <li><strong>Stack Traces:</strong> Reveal technology stack, file paths, code structure</li>
+                                        <li><strong>Database Errors:</strong> Expose SQL structure, table names, query logic</li>
+                                        <li><strong>System Errors:</strong> Show OS details, configuration, file permissions</li>
+                                        <li><strong>Business Logic Errors:</strong> Reveal application flow, validation rules</li>
+                                    </ul>
+                                    
+                                    <p><strong>Security Principles for Error Handling:</strong></p>
+                                    <ul>
+                                        <li><strong>Fail Securely:</strong> Default to denial when errors occur</li>
+                                        <li><strong>Information Minimization:</strong> Give users minimal error details</li>
+                                        <li><strong>Logging Separation:</strong> Detailed logs for admins, generic messages for users</li>
+                                        <li><strong>Consistent Responses:</strong> Don't reveal different information through timing or error differences</li>
+                                    </ul>
+                                    
+                                    <p><strong>First Principles:</strong> Errors are inevitable. How you handle them determines security. Every error condition is a decision point: fail open (allow access) or fail closed (deny access). Security requires failing closed.</p>
+                                `,
+                                whyItMatters: `
+                                    <div class="callout callout-why">
+                                        <h4>🛡️ Why This Matters</h4>
+                                        <p>Understanding error handling helps you:</p>
+                                        <ul>
+                                            <li>Find information disclosure vulnerabilities</li>
+                                            <li>Use error messages for reconnaissance</li>
+                                            <li>Test application resilience under error conditions</li>
+                                            <li>Identify fail-open conditions</li>
+                                            <li>Write secure code that handles all edge cases</li>
+                                        </ul>
+                                        <p>Error messages are often the first clue attackers get about your application's internals.</p>
+                                    </div>
+                                `,
+                                misconceptions: `
+                                    <div class="callout callout-misconception">
+                                        <h4>❌ Common Misconceptions</h4>
+                                        <p><strong>Myth:</strong> "Detailed error messages help users and support staff."</p>
+                                        <p><strong>Reality:</strong> Detailed errors help attackers more than they help legitimate users. Support staff should use separate logging systems, not public error messages.</p>
+                                        <p><strong>Security Impact:</strong> This misconception leads to massive information disclosure that simplifies attacks.</p>
+                                    </div>
+                                `,
+                                examples: [
+                                    {
+                                        title: "Real-World Scenario: SQL Error Information Leak",
+                                        description: "A login form returns different error messages for 'username not found' vs 'incorrect password'. This allows attackers to enumerate valid usernames. Even worse: a SQL error might reveal the database structure when malformed input is sent."
+                                    }
+                                ],
+                                exercises: [
+                                    {
+                                        level: "beginner",
+                                        description: "Create a login form that returns different error messages for different failure conditions. Then fix it to return generic messages.",
+                                        goal: "Understand information leakage through errors",
+                                        expected: "Two versions: leaking and secure"
+                                    },
+                                    {
+                                        level: "intermediate",
+                                        description: "Intentionally trigger different types of errors (null pointer, file not found, database connection, etc.) and observe what information is exposed.",
+                                        goal: "Learn error-based reconnaissance",
+                                        expected: "Catalog of error information leakage"
+                                    },
+                                    {
+                                        level: "advanced",
+                                        description: "Implement a comprehensive error handling system with user-friendly messages, detailed admin logging, and secure fail-closed behavior.",
+                                        goal: "Master secure error handling design",
+                                        expected: "Complete error handling implementation"
+                                    }
+                                ],
+                                mentalModels: `
+                                    <div class="diagram">
+                                        <div style="text-align: center;">
+                                            <div style="display: inline-block; padding: 1rem; border: 2px solid var(--accent-red); border-radius: 50%; margin: 0.5rem;">
+                                                Error<br>Occurs
+                                            </div>
+                                            <div style="display: inline-block; font-size: 1.5rem; margin: 0 1rem;">→</div>
+                                            <div style="display: inline-block; padding: 1rem; border: 2px solid var(--accent-amber); border-radius: var(--radius-md); margin: 0.5rem;">
+                                                Catch &<br>Classify
+                                            </div>
+                                            <div style="display: inline-block; font-size: 1.5rem; margin: 0 1rem;">→</div>
+                                            <div style="display: flex; flex-direction: column; gap: 0.5rem; margin: 0.5rem;">
+                                                <div style="padding: 0.5rem; border: 2px solid var(--accent-green); border-radius: var(--radius-sm);">
+                                                    User Message<br><small>Generic, friendly</small>
+                                                </div>
+                                                <div style="padding: 0.5rem; border: 2px solid var(--accent-blue); border-radius: var(--radius-sm);">
+                                                    Admin Log<br><small>Detailed, secure</small>
+                                                </div>
+                                                <div style="padding: 0.5rem; border: 2px solid var(--accent-red); border-radius: var(--radius-sm);">
+                                                    System Action<br><small>Fail closed</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>Mental Model:</strong> Think of errors as fires in a building. You want to: 1) Contain the fire (catch the error), 2) Alert occupants appropriately (user messages), 3) Notify firefighters with details (admin logs), and 4) Activate safety systems (fail securely). You don't broadcast the building's blueprints to everyone during a fire.</p>
+                                `
+                            }
+                        }
+                    ]
+                },
+                // ===== PHASE 4 — WEB APPLICATION ARCHITECTURE =====
+                {
+                    id: "phase-4",
+                    title: "PHASE 4 — WEB APPLICATION ARCHITECTURE",
+                    topics: [
+                        {
+                            id: "topic-4-1",
+                            title: "Frontend vs backend",
+                            completed: false,
+                            content: {
+                                explanation: `
+                                    <p>Web applications are divided into frontend (client-side) and backend (server-side) components, each with different security responsibilities and attack surfaces.</p>
+                                    
+                                    <div class="diagram">
+                                        <div class="trust-boundary">
+                                            <div class="trust-zone low">
+                                                <strong>Frontend (Client-Side)</strong><br>
+                                                • Browser execution<br>
+                                                • User interface<br>
+                                                • Presentation logic<br>
+                                                • Untrusted environment
+                                            </div>
+                                            <div class="trust-zone high">
+                                                <strong>Backend (Server-Side)</strong><br>
+                                                • Server execution<br>
+                                                • Business logic<br>
+                                                • Data processing<br>
+                                                • Trusted environment
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>Frontend Responsibilities:</strong></p>
+                                    <ul>
+                                        <li><strong>User Interface:</strong> HTML, CSS, JavaScript presentation</li>
+                                        <li><strong>Client-Side Validation:</strong> User experience only (can be bypassed)</li>
+                                        <li><strong>API Consumption:</strong> Calling backend services</li>
+                                        <li><strong>State Management:</strong> Client-side application state</li>
+                                    </ul>
+                                    
+                                    <p><strong>Backend Responsibilities:</strong></p>
+                                    <ul>
+                                        <li><strong>Business Logic:</strong> Core application rules</li>
+                                        <li><strong>Data Processing:</strong> CRUD operations, calculations</li>
+                                        <li><strong>Security Enforcement:</strong> Authentication, authorization, validation</li>
+                                        <li><strong>Integration:</strong> Databases, external services, file systems</li>
+                                    </ul>
+                                    
+                                    <p><strong>Security Boundary:</strong> The network is the trust boundary. Frontend is untrusted (controlled by user), backend is trusted (controlled by application owner). All security decisions must be made backend.</p>
+                                    
+                                    <p><strong>Architecture Patterns:</strong></p>
+                                    <ul>
+                                        <li><strong>Monolithic:</strong> Frontend and backend in same codebase</li>
+                                        <li><strong>SPA + API:</strong> Separate frontend app with API backend</li>
+                                        <li><strong>Microservices:</strong> Multiple specialized backend services</li>
+                                        <li><strong>Server-Side Rendering:</strong> HTML generated on server</li>
+                                    </ul>
+                                    
+                                    <p><strong>First Principles:</strong> Separation of concerns. Frontend handles presentation, backend handles logic and security. The browser is a sandbox, the server has system access.</p>
+                                `,
+                                whyItMatters: `
+                                    <div class="callout callout-why">
+                                        <h4>🛡️ Why This Matters</h4>
+                                        <p>Understanding architecture helps you:</p>
+                                        <ul>
+                                            <li>Identify where security controls should be implemented</li>
+                                            <li>Test each component appropriately</li>
+                                            <li>Understand data flow through the application</li>
+                                            <li>Recognize architecture-specific vulnerabilities</li>
+                                            <li>Design secure systems from the ground up</li>
+                                        </ul>
+                                        <p>Architecture determines security posture. A well-architected application is easier to secure; a poorly architected one is fundamentally vulnerable.</p>
+                                    </div>
+                                `,
+                                misconceptions: `
+                                    <div class="callout callout-misconception">
+                                        <h4>❌ Common Misconceptions</h4>
+                                        <p><strong>Myth:</strong> "If we hide it in JavaScript, it's secure."</p>
+                                        <p><strong>Reality:</strong> Anything in frontend code is visible to users. API keys, business logic, validation rules - if it's in JavaScript, attackers can see and modify it. Security must be enforced backend.</p>
+                                        <p><strong>Security Impact:</strong> This misconception leads to client-side security that provides false confidence while being completely bypassable.</p>
+                                    </div>
+                                `,
+                                examples: [
+                                    {
+                                        title: "Real-World Scenario: API Key in JavaScript",
+                                        description: "A weather app embeds its API key in JavaScript to call a weather service. Attackers extract the key and use it for their own purposes, potentially exceeding rate limits or incurring costs. The key should be stored and used backend only."
+                                    }
+                                ],
+                                exercises: [
+                                    {
+                                        level: "beginner",
+                                        description: "Analyze a simple web application and identify which parts are frontend vs backend. Document the trust boundary.",
+                                        goal: "Learn to identify architectural components",
+                                        expected: "Architecture diagram with trust boundary"
+                                    },
+                                    {
+                                        level: "intermediate",
+                                        description: "Take a monolithic application and refactor it into separate frontend and backend components with clear API boundaries.",
+                                        goal: "Understand separation of concerns",
+                                        expected: "Refactored application with API layer"
+                                    },
+                                    {
+                                        level: "advanced",
+                                        description: "Design a secure architecture for a multi-tenant SaaS application with clear frontend/backend separation and security boundaries.",
+                                        goal: "Master secure architecture design",
+                                        expected: "Complete architecture design with security considerations"
+                                    }
+                                ],
+                                mentalModels: `
+                                    <div class="diagram data-flow-diagram">
+                                        <div class="flow-node client" style="border-color: var(--accent-red);">
+                                            Frontend<br><small>Untrusted Territory</small>
+                                        </div>
+                                        <div class="flow-arrow"></div>
+                                        <div style="padding: 1rem; border: 3px dashed var(--accent-red); border-radius: var(--radius-md); background: rgba(255, 107, 107, 0.1);">
+                                            <strong>Network Boundary</strong><br>
+                                            Everything crosses here
+                                        </div>
+                                        <div class="flow-arrow"></div>
+                                        <div class="flow-node server" style="border-color: var(--accent-green);">
+                                            Backend<br><small>Fortress</small>
+                                        </div>
+                                        <div class="flow-arrow"></div>
+                                        <div class="flow-node database">
+                                            Data &<br>External Services
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>Mental Model:</strong> Think of the frontend as a public park (anyone can visit, look around, maybe even litter). The backend is a secured building (requires ID checks, has guards, contains valuables). The network is the park fence. You let people enjoy the park but protect the building.</p>
+                                `
+                            }
+                        },
+                        {
+                            id: "topic-4-2",
+                            title: "APIs (REST)",
+                            completed: false,
+                            content: {
+                                explanation: `
+                                    <p>REST (Representational State Transfer) APIs are the backbone of modern web applications, enabling communication between frontend and backend components.</p>
+                                    
+                                    <div class="diagram">
+                                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.5rem;">
+                                            <div style="padding: 0.5rem; border: 2px solid var(--accent-blue); border-radius: var(--radius-sm); text-align: center;">
+                                                <strong>GET</strong><br>Retrieve
+                                            </div>
+                                            <div style="padding: 0.5rem; border: 2px solid var(--accent-green); border-radius: var(--radius-sm); text-align: center;">
+                                                <strong>POST</strong><br>Create
+                                            </div>
+                                            <div style="padding: 0.5rem; border: 2px solid var(--accent-amber); border-radius: var(--radius-sm); text-align: center;">
+                                                <strong>PUT</strong><br>Update/Replace
+                                            </div>
+                                            <div style="padding: 0.5rem; border: 2px solid var(--accent-red); border-radius: var(--radius-sm); text-align: center;">
+                                                <strong>DELETE</strong><br>Remove
+                                            </div>
+                                            <div style="padding: 0.5rem; border: 2px solid var(--accent-blue); border-radius: var(--radius-sm); text-align: center;">
+                                                <strong>PATCH</strong><br>Partial Update
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>REST Principles:</strong></p>
+                                    <ul>
+                                        <li><strong>Stateless:</strong> Each request contains all necessary information</li>
+                                        <li><strong>Resource-Based:</strong> Everything is a resource (users, products, orders)</li>
+                                        <li><strong>Uniform Interface:</strong> Consistent use of HTTP methods and status codes</li>
+                                        <li><strong>Representation:</strong> Resources have multiple representations (JSON, XML)</li>
+                                    </ul>
+                                    
+                                    <p><strong>Common REST Patterns:</strong></p>
+                                    <div class="diagram">
+                                        <div style="font-family: var(--monospace); background: var(--tertiary-bg); padding: 1rem; border-radius: var(--radius-md);">
+                                            GET /api/users # List users<br>
+                                            POST /api/users # Create user<br>
+                                            GET /api/users/123 # Get user 123<br>
+                                            PUT /api/users/123 # Update user 123<br>
+                                            DELETE /api/users/123 # Delete user 123<br>
+                                            GET /api/users/123/orders # Get user's orders
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>Security Considerations:</strong></p>
+                                    <ul>
+                                        <li><strong>Authentication:</strong> How API calls are authenticated (tokens, API keys)</li>
+                                        <li><strong>Authorization:</strong> Permission checks for each endpoint</li>
+                                        <li><strong>Input Validation:</strong> All API parameters must be validated</li>
+                                        <li><strong>Rate Limiting:</strong> Prevent abuse through excessive requests</li>
+                                        <li><strong>Data Exposure:</strong> Avoid returning unnecessary data</li>
+                                    </ul>
+                                    
+                                    <p><strong>First Principles:</strong> APIs are contracts between components. They define what data can be requested and what actions can be performed. Security is about enforcing these contracts.</p>
+                                `,
+                                whyItMatters: `
+                                    <div class="callout callout-why">
+                                        <h4>🛡️ Why This Matters</h4>
+                                        <p>Understanding REST APIs helps you:</p>
+                                        <ul>
+                                            <li>Test modern web applications effectively</li>
+                                            <li>Identify API endpoints and their functionality</li>
+                                            <li>Understand authentication and authorization mechanisms</li>
+                                            <li>Test for API-specific vulnerabilities</li>
+                                            <li>Design secure API architectures</li>
+                                        </ul>
+                                        <p>APIs are the primary attack surface for modern applications. Most mobile apps and SPAs communicate exclusively through APIs.</p>
+                                    </div>
+                                `,
+                                misconceptions: `
+                                    <div class="callout callout-misconception">
+                                        <h4>❌ Common Misconceptions</h4>
+                                        <p><strong>Myth:</strong> "APIs are more secure than traditional web applications because they're 'headless'."</p>
+                                        <p><strong>Reality:</strong> APIs have the same vulnerabilities as web applications (injection, authentication flaws, etc.) plus API-specific issues. Being headless doesn't make them secure; it just changes the attack surface.</p>
+                                        <p><strong>Security Impact:</strong> This misconception leads to insufficient API security testing and protection.</p>
+                                    </div>
+                                `,
+                                examples: [
+                                    {
+                                        title: "Real-World Scenario: Excessive Data Exposure",
+                                        description: "A user profile API returns full user objects including password hashes, security questions, and internal IDs. An attacker calls the API and gets sensitive data for all users. The API should return only necessary fields for each context."
+                                    }
+                                ],
+                                exercises: [
+                                    {
+                                        level: "beginner",
+                                        description: "Document all API endpoints in a sample application, including methods, parameters, and responses.",
+                                        goal: "Learn API reconnaissance",
+                                        expected: "Complete API endpoint documentation"
+                                    },
+                                    {
+                                        level: "intermediate",
+                                        description: "Create a REST API with proper authentication, authorization, and validation. Then intentionally introduce vulnerabilities and test for them.",
+                                        goal: "Understand API security implementation",
+                                        expected: "API with security controls and test cases"
+                                    },
+                                    {
+                                        level: "advanced",
+                                        description: "Implement and test rate limiting, request validation, and proper error handling for an API.",
+                                        goal: "Master API security features",
+                                        expected: "Secure API implementation with comprehensive testing"
+                                    }
+                                ],
+                                mentalModels: `
+                                    <div class="diagram data-flow-diagram">
+                                        <div class="flow-node client">API Client</div>
+                                        <div class="flow-arrow"></div>
+                                        <div style="padding: 1rem; border: 2px solid var(--accent-red); border-radius: var(--radius-md);">
+                                            <strong>API Gateway</strong><br>
+                                            • Authentication<br>
+                                            • Rate Limiting<br>
+                                            • Request Validation
+                                        </div>
+                                        <div class="flow-arrow"></div>
+                                        <div style="padding: 1rem; border: 2px solid var(--accent-amber); border-radius: var(--radius-md);">
+                                            <strong>Business Logic</strong><br>
+                                            • Authorization<br>
+                                            • Processing<br>
+                                            • Rules Enforcement
+                                        </div>
+                                        <div class="flow-arrow"></div>
+                                        <div style="padding: 1rem; border: 2px solid var(--accent-green); border-radius: var(--radius-md);">
+                                            <strong>Data Layer</strong><br>
+                                            • Query Building<br>
+                                            • Data Retrieval<br>
+                                            • Response Formatting
+                                        </div>
+                                        <div class="flow-arrow"></div>
+                                        <div class="flow-node">API Response<br><small>Filtered & Formatted</small></div>
+                                    </div>
+                                    
+                                    <p><strong>Mental Model:</strong> Think of an API as a restaurant. Customers (clients) make requests (orders). The host (API gateway) checks reservations (authentication). The kitchen (business logic) prepares the food (processes requests). Servers (data layer) deliver meals (responses). Each dish (response) is properly plated (formatted) with appropriate portions (data filtering).</p>
+                                `
+                            }
+                        },
+                        {
+                            id: "topic-4-3",
+                            title: "Databases (SQL & NoSQL concepts)",
+                            completed: false,
+                            content: {
+                                explanation: `
+                                    <p>Databases store and manage application data. Understanding database concepts is essential for testing data-related vulnerabilities.</p>
+                                    
+                                    <div class="diagram">
+                                        <div class="trust-boundary">
+                                            <div class="trust-zone high">
+                                                <strong>SQL Databases</strong><br>
+                                                • Structured data<br>
+                                                • Tables with relationships<br>
+                                                • ACID transactions<br>
+                                                • Examples: MySQL, PostgreSQL
+                                            </div>
+                                            <div class="trust-zone low">
+                                                <strong>NoSQL Databases</strong><br>
+                                                • Flexible schemas<br>
+                                                • Document/Key-Value store<br>
+                                                • Horizontal scaling<br>
+                                                • Examples: MongoDB, Redis
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>SQL Database Concepts:</strong></p>
+                                    <ul>
+                                        <li><strong>Tables:</strong> Structured data in rows and columns</li>
+                                        <li><strong>Relationships:</strong> Foreign keys connecting tables</li>
+                                        <li><strong>Queries:</strong> SQL language for data operations</li>
+                                        <li><strong>ACID:</strong> Atomicity, Consistency, Isolation, Durability</li>
+                                    </ul>
+                                    
+                                    <p><strong>NoSQL Database Concepts:</strong></p>
+                                    <ul>
+                                        <li><strong>Documents:</strong> JSON-like structures (MongoDB)</li>
+                                        <li><strong>Key-Value:</strong> Simple key-value pairs (Redis)</li>
+                                        <li><strong>Column-Family:</strong> Column-oriented storage (Cassandra)</li>
+                                        <li><strong>Graph:</strong> Nodes and relationships (Neo4j)</li>
+                                    </ul>
+                                    
+                                    <p><strong>Security Implications:</strong></p>
+                                    <div class="diagram">
+                                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                            <div style="border: 2px solid var(--accent-red); padding: 1rem; border-radius: var(--radius-md);">
+                                                <strong>SQL Injection</strong><br>
+                                                • Malicious SQL in queries<br>
+                                                • Classic injection attack<br>
+                                                • Parameterized queries prevent
+                                            </div>
+                                            <div style="border: 2px solid var(--accent-amber); padding: 1rem; border-radius: var(--radius-md);">
+                                                <strong>NoSQL Injection</strong><br>
+                                                • Operator injection in JSON<br>
+                                                • Different syntax, same concept<br>
+                                                • Input validation prevents
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>First Principles:</strong> Databases are where application data lives. They're the ultimate target for many attacks. Understanding how data is stored and accessed helps you find vulnerabilities in data handling.</p>
+                                `,
+                                whyItMatters: `
+                                    <div class="callout callout-why">
+                                        <h4>🛡️ Why This Matters</h4>
+                                        <p>Understanding databases helps you:</p>
+                                        <ul>
+                                            <li>Test for SQL and NoSQL injection vulnerabilities</li>
+                                            <li>Understand data flow through applications</li>
+                                            <li>Identify sensitive data storage issues</li>
+                                            <li>Test authentication and authorization at data level</li>
+                                            <li>Understand performance implications of queries</li>
+                                        </ul>
+                                        <p>Database breaches are often the most damaging because they expose sensitive user data.</p>
+                                    </div>
+                                `,
+                                misconceptions: `
+                                    <div class="callout callout-misconception">
+                                        <h4>❌ Common Misconceptions</h4>
+                                        <p><strong>Myth:</strong> "NoSQL databases don't have injection vulnerabilities."</p>
+                                        <p><strong>Reality:</strong> NoSQL databases have different injection vectors but are equally vulnerable. MongoDB injection, Redis command injection, and other NoSQL injection techniques exist and are commonly exploited.</p>
+                                        <p><strong>Security Impact:</strong> This misconception leads to applications switching to NoSQL without proper security controls, creating new vulnerabilities.</p>
+                                    </div>
+                                `,
+                                examples: [
+                                    {
+                                        title: "Real-World Scenario: MongoDB Injection",
+                                        description: "A login form constructs a MongoDB query by concatenating user input: <code>db.users.find({username: userInput})</code>. An attacker enters <code>{$ne: null}</code> as the username, making the query <code>db.users.find({username: {$ne: null}})</code> which matches all users, potentially bypassing authentication."
+                                    }
+                                ],
+                                exercises: [
+                                    {
+                                        level: "beginner",
+                                        description: "Set up a simple SQL database and practice basic CRUD operations. Then create a vulnerable query and fix it with parameterization.",
+                                        goal: "Understand SQL basics and injection prevention",
+                                        expected: "Vulnerable and secure SQL examples"
+                                    },
+                                    {
+                                        level: "intermediate",
+                                        description: "Create a simple application with both SQL and NoSQL backends. Test for injection vulnerabilities in each.",
+                                        goal: "Compare SQL and NoSQL security",
+                                        expected: "Cross-database security testing results"
+                                    },
+                                    {
+                                        level: "advanced",
+                                        description: "Implement a database abstraction layer that safely handles both SQL and NoSQL queries with proper input validation and parameterization.",
+                                        goal: "Master secure database interaction",
+                                        expected: "Secure database abstraction layer"
+                                    }
+                                ],
+                                mentalModels: `
+                                    <div class="diagram">
+                                        <div style="text-align: center;">
+                                            <div style="display: inline-block; padding: 1rem; border: 2px solid var(--accent-blue); border-radius: var(--radius-md); margin: 0.5rem;">
+                                                Application Code
+                                            </div>
+                                            <div style="display: inline-block; font-size: 1.5rem; margin: 0 1rem;">→</div>
+                                            <div style="display: inline-block; padding: 1rem; border: 2px solid var(--accent-amber); border-radius: var(--radius-md); margin: 0.5rem;">
+                                                Query Builder<br><small>Safe or Vulnerable</small>
+                                            </div>
+                                            <div style="display: inline-block; font-size: 1.5rem; margin: 0 1rem;">→</div>
+                                            <div style="display: inline-block; padding: 1rem; border: 2px solid var(--accent-green); border-radius: var(--radius-md); margin: 0.5rem;">
+                                                Database Engine<br><small>SQL or NoSQL</small>
+                                            </div>
+                                            <div style="display: inline-block; font-size: 1.5rem; margin: 0 1rem;">→</div>
+                                            <div style="display: inline-block; padding: 1rem; border: 2px solid var(--accent-blue); border-radius: var(--radius-md); margin: 0.5rem;">
+                                                Data Results
+                                            </div>
+                                        </div>
+                                        <div style="text-align: center; margin-top: 1rem; padding: 0.5rem; border: 2px dashed var(--accent-red); border-radius: var(--radius-md);">
+                                            <strong>Injection Point:</strong> Where user input becomes part of the query
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>Mental Model:</strong> Think of database queries as recipes. User input is ingredients. SQL injection is like someone handing you poison and saying "add this to the recipe." Parameterized queries are like having pre-measured, verified ingredients. NoSQL injection is the same concept but with a different cooking method.</p>
+                                `
+                            }
+                        },
+                        {
+                            id: "topic-4-4",
+                            title: "ORMs",
+                            completed: false,
+                            content: {
+                                explanation: `
+                                    <p>Object-Relational Mappers (ORMs) bridge the gap between object-oriented code and relational databases. They can prevent SQL injection but introduce their own security concerns.</p>
+                                    
+                                    <div class="diagram">
+                                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                            <div style="border: 2px solid var(--accent-blue); padding: 1rem; border-radius: var(--radius-md);">
+                                                <strong>ORM Benefits</strong><br>
+                                                • Database abstraction<br>
+                                                • Automatic SQL generation<br>
+                                                • Type safety<br>
+                                                • Reduced boilerplate code
+                                            </div>
+                                            <div style="border: 2px solid var(--accent-red); padding: 1rem; border-radius: var(--radius-md);">
+                                                <strong>ORM Security Risks</strong><br>
+                                                • Mass assignment vulnerabilities<br>
+                                                • N+1 query problems<br>
+                                                • Complex query security<br>
+                                                • Performance issues
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>How ORMs Work:</strong></p>
+                                    <div class="diagram">
+                                        <div style="font-family: var(--monospace); background: var(--tertiary-bg); padding: 1rem; border-radius: var(--radius-md);">
+                                            // Object-oriented code<br>
+                                            user = User.find_by(email: "test@example.com")<br>
+                                            user.update(name: "New Name")<br><br>
+                                            // Generated SQL<br>
+                                            SELECT * FROM users WHERE email = 'test@example.com';<br>
+                                            UPDATE users SET name = 'New Name' WHERE id = 123;
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>Common ORM Security Issues:</strong></p>
+                                    <ul>
+                                        <li><strong>Mass Assignment:</strong> Updating fields that shouldn't be user-modifiable</li>
+                                        <li><strong>SQL Injection in Raw Queries:</strong> ORMs allow raw SQL that can be vulnerable</li>
+                                        <li><strong>Query Complexity:</strong> Complex ORM queries may have security implications</li>
+                                        <li><strong>Data Exposure:</strong> ORMs may expose more data than intended</li>
+                                    </ul>
+                                    
+                                    <p><strong>Mass Assignment Example:</strong></p>
+                                    <div class="diagram">
+                                        <div style="font-family: var(--monospace); background: var(--tertiary-bg); padding: 1rem; border-radius: var(--radius-md);">
+                                            // Vulnerable update<br>
+                                            user.update(params[:user])<br><br>
+                                            // Attacker sends:<br>
+                                            {user: {name: "Hacked", role: "admin"}}<br><br>
+                                            // User becomes admin!
+                                        </div>
+                                    </div>
+                                    
+                                    <p><strong>First Principles:</strong> ORMs are abstraction layers. Like all abstractions, they can leak. Understanding what happens underneath the ORM is essential for security testing.</p>
+                                `,
+                                whyItMatters: `
+                                    <div class="callout callout-why">
+                                        <h4>🛡️ Why This Matters</h4>
+                                        <p>Understanding ORMs helps you:</p>
+                                        <ul>
+                                            <li>Test for mass assignment vulnerabilities</li>
+                                            <li>Identify when ORMs are used vs raw SQL</li>
+                                            <li>Understand performance and security trade-offs</li>
+                                            <li>Test complex query functionality securely</li>
+                                            <li>Write secure code using ORMs properly</li>
+                                        </ul>
+                                        <p>ORMs are ubiquitous in modern web development. Their security model is different from raw SQL but equally important.</p>
+                                    </div>
+                                `,
+                                misconceptions: `
+                                    <div class="callout callout-misconception">
+                                        <h4>❌ Common Misconceptions</h4>
+                                        <p><strong>Myth:</strong> "ORMs prevent all SQL injection automatically."</p>
+                                        <p><strong>Reality:</strong> ORMs prevent SQL injection in basic CRUD operations but can be bypassed with raw queries, complex query builders, or ORM-specific injection techniques. Mass assignment is a separate vulnerability ORMs can introduce.</p>
+                                        <p><strong>Security Impact:</strong> This misconception leads developers to trust ORMs completely while missing ORM-specific vulnerabilities.</p>
+                                    </div>
+                                `,
+                                examples: [
+                                    {
+                                        title: "Real-World Scenario: Rails Mass Assignment",
+                                        description: "A Ruby on Rails application uses <code>User.new(params[:user])</code> to create users. The User model has an <code>admin</code> boolean field. An attacker adds <code>admin=1</code> to the registration form and becomes an administrator. This was such a common issue that Rails added strong parameters as a default protection."
+                                    }
+                                ],
+                                exercises: [
+                                    {
+                                        level: "beginner",
+                                        description: "Create a simple application with an ORM. Demonstrate mass assignment vulnerability, then fix it with proper field whitelisting.",
+                                        goal: "Understand mass assignment risks and prevention",
+                                        expected: "Vulnerable and secure ORM usage"
+                                    },
+                                    {
+                                        level: "intermediate",
+                                        description: "Use an ORM's query builder to create complex queries. Test for injection vulnerabilities in query building methods.",
+                                        goal: "Learn ORM query security",
+                                        expected: "ORM query security testing results"
+                                    },
+                                    {
+                                        level: "advanced",
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
